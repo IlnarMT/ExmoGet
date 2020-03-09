@@ -6,4 +6,5 @@ import java.util.List;
 public class CarrencyTradePair {
     //public String currencyPair;
     public ArrayList<Transact> BTC_USD;
+    public ArrayList<Transact> BTC_EUR;
 }

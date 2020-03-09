@@ -6,5 +6,5 @@ public class Transact {
     private double price;
     private double quantity;
     private double amount;
-    private int date;
+    public int date;
 }

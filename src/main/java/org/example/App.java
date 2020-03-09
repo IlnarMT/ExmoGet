@@ -12,6 +12,9 @@ import org.example.model.CarrencyTradePair;
 import org.example.model.Transact;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.util.Date;
 
 public class App {
 
@@ -58,10 +61,13 @@ public class App {
 
     private static void parsJson(String json){
         Gson gson = new Gson();
-        Gson gson2 = new Gson();
-        Transact tran = gson.fromJson("{\"trade_id\":154639721,\"type\":\"sell\",\"quantity\":\"0.1118\",\"price\":\"8442.7587\",\"amount\":\"943.90042266\",\"date\":1583751142}", Transact.class);
-        CarrencyTradePair carrencyTradePair =gson2.fromJson(json, CarrencyTradePair.class);
-        System.out.println("Pars JSON: "+tran.trade_id);
-        System.out.println("Pars JSON2: "+ carrencyTradePair.BTC_USD.get(99).trade_id);
+        CarrencyTradePair carrencyTradePair =gson.fromJson(json, CarrencyTradePair.class);
+        System.out.println("Pars BTC_USD: "+ carrencyTradePair.BTC_USD.get(99).trade_id);
+        System.out.println("Pars BTC_EUR: "+ carrencyTradePair.BTC_EUR.get(99).trade_id);
+        for (Transact tran:carrencyTradePair.BTC_USD){
+            int unixDate=tran.date;
+            Instant instant = Instant.ofEpochSecond(unixDate);
+            System.out.println(instant.toString());
+        }
     }
 }
