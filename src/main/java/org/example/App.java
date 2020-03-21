@@ -24,7 +24,6 @@ public class App {
 
         App obj = new App();
 
-
         try {
             System.out.println("Testing 1 - Send Http GET request");
             obj.sendGet();
