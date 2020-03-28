@@ -52,8 +52,9 @@ public class App {
 
     private String sendGet() throws Exception {
         HttpEntity entity;
+        String getUri="https://api.exmo.me/v1/trades/?pair=BTC_USD,BTC_EUR";
 
-        HttpGet request = new HttpGet("https://api.exmo.me/v1/trades/?pair=BTC_USD,BTC_EUR"); //,BTC_EUR
+        HttpGet request = new HttpGet(getUri); //,BTC_EUR
 
         try (CloseableHttpResponse response = httpClient.execute(request)) {
 
