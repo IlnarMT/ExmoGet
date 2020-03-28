@@ -1,7 +1,8 @@
 package org.example.model;
 
+import org.jooq.codegen.maven.example.tables.Transacts;
+
 import java.util.ArrayList;
-import java.util.List;
 
 public class CarrencyTradePair {
     //public String currencyPair;

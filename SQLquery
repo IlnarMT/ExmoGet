@@ -1,0 +1,23 @@
+CREATE TABLE author (
+  id int NOT NULL,
+  first_name varchar(255) DEFAULT NULL,
+  last_name varchar(255) DEFAULT NULL,
+  PRIMARY KEY (id)
+);
+
+INSERT INTO author (id,first_name,last_name) VALUES (1, 'Ilnar', 'Mukhametzanov');
+INSERT INTO author (id,first_name,last_name) VALUES (2, 'Марат', 'Батталов');
+INSERT INTO author (id,first_name,last_name) VALUES (3, 'Владимир', 'Тихонов');
+
+CREATE TABLE transacts (
+  trade_id BIGINT NOT NULL,
+  trade_pair varchar(16) DEFAULT NULL,
+  type varchar(8) DEFAULT NULL,
+  quantity numeric DEFAULT NULL,
+  price numeric DEFAULT NULL,
+  amount numeric DEFAULT NULL,
+  date BIGINT DEFAULT NULL,
+  PRIMARY KEY (trade_id)
+);
+
+Cannot resolve method 'values(int, java.lang.String, java.lang.String, double, double, double, int)'
