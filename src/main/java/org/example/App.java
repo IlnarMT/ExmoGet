@@ -27,7 +27,7 @@ public class App {
         int k=0;
 
         try {
-            for (int i=0;i<120;i++){
+            for (int i=0;i<360;i++){
                 System.out.println("Testing 1 - Send Http GET request");
                 strJson=obj.sendGet();
 
