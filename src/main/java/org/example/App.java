@@ -9,10 +9,11 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.example.model.CarrencyTradePair;
-import org.example.model.Transact;
+import org.example.service.JsonParsService;
+import org.example.service.MyHttpService;
 
 import java.io.IOException;
-import java.time.Instant;
+import java.util.HashMap;
 
 public class App {
 
@@ -20,21 +21,30 @@ public class App {
 
     public static void main(String[] args) throws Exception {
 
-        App obj = new App();
+        App app = new App();
         String strJson;
         ConnectDb connectDb=new ConnectDb();
+        MyHttpService myHttpService=new MyHttpService();
         CarrencyTradePair carrencyTradePair;
+        JsonParsService jsonParsService=new JsonParsService();
         int k=0;
+        String url;
+        test();
 
         try {
-            for (int i=0;i<360;i++){
-                System.out.println("Testing 1 - Send Http GET request");
-                strJson=obj.sendGet();
+            for (int i=0;i<5000;i++){
+                //System.out.println("Testing 1 - Send Http GET request");
+                //strJson=app.sendGet();
+                url="https://api.exmo.me/v1.1/trades";
+                strJson=myHttpService.doPostRequest(url,new HashMap<String, String>() {{
+                    put("pair", "BTC_USD");
+                    put("pair", "BTC_EUR");
+                }});
 
-                carrencyTradePair=parsJson(strJson);
+                carrencyTradePair=jsonParsService.parsJsonToCarrencyTradePair(strJson);
 
                 connectDb.insertIntoTableTransaction(TradePairType.BTC_USD,carrencyTradePair.BTC_USD);
-                connectDb.insertIntoTableTransaction(TradePairType.BTC_EUR,carrencyTradePair.BTC_EUR);
+                //connectDb.insertIntoTableTransaction(TradePairType.BTC_EUR,carrencyTradePair.BTC_EUR);
                 Thread.sleep(30000);
                 k++;
                 System.out.println("Сделан цикл get "+k);
@@ -54,16 +64,16 @@ public class App {
         HttpEntity entity;
         String getUri="https://api.exmo.me/v1/trades/?pair=BTC_USD,BTC_EUR";
 
-        HttpGet request = new HttpGet(getUri); //,BTC_EUR
+        HttpGet request = new HttpGet(getUri);
 
         try (CloseableHttpResponse response = httpClient.execute(request)) {
 
             // Get HttpResponse Status
-            System.out.println(response.getStatusLine().toString());
+            //System.out.println(response.getStatusLine().toString());
 
             entity = response.getEntity();
             Header headers = entity.getContentType();
-            System.out.println(headers);
+            //System.out.println(headers);
 
             if (entity != null) {
                 // return it as a String
@@ -76,16 +86,21 @@ public class App {
 
     }
 
-    private static CarrencyTradePair parsJson(String json){
-        Gson gson = new Gson();
-        CarrencyTradePair carrencyTradePair =gson.fromJson(json, CarrencyTradePair.class);
-        //System.out.println("Pars BTC_USD: "+ carrencyTradePair.BTC_USD.get(99).trade_id);
-        //System.out.println("Pars BTC_EUR: "+ carrencyTradePair.BTC_EUR.get(99).trade_id);
-/*        for (Transact transact:carrencyTradePair.BTC_USD){
-            Long unixDate=transact.date;
-            Instant instant = Instant.ofEpochSecond(unixDate);
-            System.out.println(instant.toString());
-        }*/
-        return carrencyTradePair;
+
+    public static void test() throws IOException {
+
+        // issue the Get request
+        MyHttpService myHttpService = new MyHttpService();
+        String getResponse = myHttpService.doGetRequest("https://www.vogella.com/");
+        System.out.println(getResponse);
+
+
+        // issue the post request
+        String url="https://api.exmo.me/v1.1/trades";
+        String postResponse = myHttpService.doPostRequest(url,new HashMap<String, String>() {{
+            put("pair", "BTC_USD");
+            put("pair", "BTC_EUR");
+        }});
+        System.out.println(postResponse);
     }
 }
