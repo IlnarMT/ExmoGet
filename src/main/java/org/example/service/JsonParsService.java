@@ -2,6 +2,7 @@ package org.example.service;
 
 import com.google.gson.Gson;
 import org.example.model.CarrencyTradePair;
+import org.example.model.OrderBook;
 
 public class JsonParsService {
 
@@ -16,5 +17,9 @@ public class JsonParsService {
             System.out.println(instant.toString());
         }*/
         return carrencyTradePair;
+    }
+    public static OrderBook parsJsonToOrderBook(String jsonStr){
+        Gson gson = new Gson();
+        return gson.fromJson(jsonStr, OrderBook.class);
     }
 }
