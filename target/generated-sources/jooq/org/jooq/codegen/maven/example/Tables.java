@@ -6,7 +6,7 @@ package org.jooq.codegen.maven.example;
 
 import javax.annotation.Generated;
 
-import org.jooq.codegen.maven.example.tables.Author;
+import org.jooq.codegen.maven.example.tables.OrderBooks;
 import org.jooq.codegen.maven.example.tables.Transacts;
 
 
@@ -24,9 +24,9 @@ import org.jooq.codegen.maven.example.tables.Transacts;
 public class Tables {
 
     /**
-     * The table <code>public.author</code>.
+     * The table <code>public.order_books</code>.
      */
-    public static final Author AUTHOR = org.jooq.codegen.maven.example.tables.Author.AUTHOR;
+    public static final OrderBooks ORDER_BOOKS = org.jooq.codegen.maven.example.tables.OrderBooks.ORDER_BOOKS;
 
     /**
      * The table <code>public.transacts</code>.

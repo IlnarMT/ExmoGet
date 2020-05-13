@@ -12,7 +12,7 @@ import javax.annotation.Generated;
 
 import org.jooq.Catalog;
 import org.jooq.Table;
-import org.jooq.codegen.maven.example.tables.Author;
+import org.jooq.codegen.maven.example.tables.OrderBooks;
 import org.jooq.codegen.maven.example.tables.Transacts;
 import org.jooq.impl.SchemaImpl;
 
@@ -30,7 +30,7 @@ import org.jooq.impl.SchemaImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Public extends SchemaImpl {
 
-    private static final long serialVersionUID = -1590860605;
+    private static final long serialVersionUID = 963365593;
 
     /**
      * The reference instance of <code>public</code>
@@ -38,9 +38,9 @@ public class Public extends SchemaImpl {
     public static final Public PUBLIC = new Public();
 
     /**
-     * The table <code>public.author</code>.
+     * The table <code>public.order_books</code>.
      */
-    public final Author AUTHOR = org.jooq.codegen.maven.example.tables.Author.AUTHOR;
+    public final OrderBooks ORDER_BOOKS = org.jooq.codegen.maven.example.tables.OrderBooks.ORDER_BOOKS;
 
     /**
      * The table <code>public.transacts</code>.
@@ -72,7 +72,7 @@ public class Public extends SchemaImpl {
 
     private final List<Table<?>> getTables0() {
         return Arrays.<Table<?>>asList(
-            Author.AUTHOR,
+            OrderBooks.ORDER_BOOKS,
             Transacts.TRANSACTS);
     }
 }

@@ -25,11 +25,13 @@ public class App {
             url="https://api.exmo.me/v1.1/order_book";
             String strJsonTest=myHttpService.doPostRequest(url,new HashMap<String, String>() {{
                 put("pair", "BTC_USD");
-                /*put("pair", "BTC_EUR");*/
+                put("limit", "50");
             }});
             System.out.println(strJsonTest);
             orderBook=jsonParsService.parsJsonToOrderBook(strJsonTest);
+            connectDb.insertIntoOrderBooks(TradePairType.BTC_USD,orderBook);
 
+            if (i=)
             url="https://api.exmo.me/v1.1/trades";
             strJson=myHttpService.doPostRequest(url,new HashMap<String, String>() {{
                 put("pair", "BTC_USD");

@@ -4,5 +4,5 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 
 public class OrderBook {
-    OrderBookAskbid BTC_USD;
+    public OrderBookAskbid BTC_USD;
 }

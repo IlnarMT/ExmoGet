@@ -1,13 +1,16 @@
 package org.example;
 
+import org.example.model.OrderBook;
 import org.example.model.Transact;
 import org.jooq.*;
-import org.jooq.codegen.maven.example.tables.Transacts;
+//import org.jooq.codegen.maven.example.tables.Transacts;
 import org.jooq.impl.DSL;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -66,6 +69,24 @@ public class ConnectDb {
         }
         lastTransactId=transacts.get(0).getTrade_id();
         lastTransactIdMap.put(tradePair,lastTransactId);
+    }
+
+    public void insertIntoOrderBooks(TradePairType tradePairType, OrderBook orderBook){
+        Instant instant=Instant.now();
+        Long currentUnixTime=instant.getEpochSecond();
+        System.out.println("Current time= "+currentUnixTime);
+        for (ArrayList<BigDecimal> i: orderBook.BTC_USD.ask) {
+            create.insertInto(ORDER_BOOKS,
+                    ORDER_BOOKS.TRADE_PAIR, ORDER_BOOKS.TYPE, ORDER_BOOKS.PRICE, ORDER_BOOKS.QUANTITY, ORDER_BOOKS.AMOUNT, ORDER_BOOKS.DATE)
+                    .values( "BTC_USD", "ask",i.get(0),i.get(1),i.get(2),currentUnixTime)
+                    .execute();
+        }
+        for (ArrayList<BigDecimal> i: orderBook.BTC_USD.bid) {
+            create.insertInto(ORDER_BOOKS,
+                    ORDER_BOOKS.TRADE_PAIR, ORDER_BOOKS.TYPE, ORDER_BOOKS.PRICE, ORDER_BOOKS.QUANTITY, ORDER_BOOKS.AMOUNT, ORDER_BOOKS.DATE)
+                    .values( "BTC_USD", "bid",i.get(0),i.get(1),i.get(2),currentUnixTime)
+                    .execute();
+        }
     }
 
 }

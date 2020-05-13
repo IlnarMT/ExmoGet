@@ -7,9 +7,9 @@ package org.jooq.codegen.maven.example;
 import javax.annotation.Generated;
 
 import org.jooq.UniqueKey;
-import org.jooq.codegen.maven.example.tables.Author;
+import org.jooq.codegen.maven.example.tables.OrderBooks;
 import org.jooq.codegen.maven.example.tables.Transacts;
-import org.jooq.codegen.maven.example.tables.records.AuthorRecord;
+import org.jooq.codegen.maven.example.tables.records.OrderBooksRecord;
 import org.jooq.codegen.maven.example.tables.records.TransactsRecord;
 import org.jooq.impl.Internal;
 
@@ -37,7 +37,7 @@ public class Keys {
     // UNIQUE and PRIMARY KEY definitions
     // -------------------------------------------------------------------------
 
-    public static final UniqueKey<AuthorRecord> AUTHOR_PKEY = UniqueKeys0.AUTHOR_PKEY;
+    public static final UniqueKey<OrderBooksRecord> ORDER_BOOKS_PKEY = UniqueKeys0.ORDER_BOOKS_PKEY;
     public static final UniqueKey<TransactsRecord> TRANSACTS_PKEY = UniqueKeys0.TRANSACTS_PKEY;
 
     // -------------------------------------------------------------------------
@@ -50,7 +50,7 @@ public class Keys {
     // -------------------------------------------------------------------------
 
     private static class UniqueKeys0 {
-        public static final UniqueKey<AuthorRecord> AUTHOR_PKEY = Internal.createUniqueKey(Author.AUTHOR, "author_pkey", Author.AUTHOR.ID);
+        public static final UniqueKey<OrderBooksRecord> ORDER_BOOKS_PKEY = Internal.createUniqueKey(OrderBooks.ORDER_BOOKS, "order_books_pkey", OrderBooks.ORDER_BOOKS.ORDER_BOOKS_ID);
         public static final UniqueKey<TransactsRecord> TRANSACTS_PKEY = Internal.createUniqueKey(Transacts.TRANSACTS, "transacts_pkey", Transacts.TRANSACTS.TRADE_ID);
     }
 }

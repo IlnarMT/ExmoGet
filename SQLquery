@@ -20,4 +20,15 @@ CREATE TABLE transacts (
   PRIMARY KEY (trade_id)
 );
 
+CREATE TABLE order_books (
+  order_books_id BIGSERIAL PRIMARY KEY,
+  type varchar(8) DEFAULT NULL,
+  price numeric DEFAULT NULL,
+  quantity numeric DEFAULT NULL,
+  amount numeric DEFAULT NULL,
+  date BIGINT DEFAULT NULL
+);
+
+
+
 Cannot resolve method 'values(int, java.lang.String, java.lang.String, double, double, double, int)'

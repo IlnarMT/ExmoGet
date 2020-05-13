@@ -8,7 +8,7 @@ import javax.annotation.Generated;
 
 import org.jooq.Index;
 import org.jooq.OrderField;
-import org.jooq.codegen.maven.example.tables.Author;
+import org.jooq.codegen.maven.example.tables.OrderBooks;
 import org.jooq.codegen.maven.example.tables.Transacts;
 import org.jooq.impl.Internal;
 
@@ -30,7 +30,7 @@ public class Indexes {
     // INDEX definitions
     // -------------------------------------------------------------------------
 
-    public static final Index AUTHOR_PKEY = Indexes0.AUTHOR_PKEY;
+    public static final Index ORDER_BOOKS_PKEY = Indexes0.ORDER_BOOKS_PKEY;
     public static final Index TRANSACTS_PKEY = Indexes0.TRANSACTS_PKEY;
 
     // -------------------------------------------------------------------------
@@ -38,7 +38,7 @@ public class Indexes {
     // -------------------------------------------------------------------------
 
     private static class Indexes0 {
-        public static Index AUTHOR_PKEY = Internal.createIndex("author_pkey", Author.AUTHOR, new OrderField[] { Author.AUTHOR.ID }, true);
+        public static Index ORDER_BOOKS_PKEY = Internal.createIndex("order_books_pkey", OrderBooks.ORDER_BOOKS, new OrderField[] { OrderBooks.ORDER_BOOKS.ORDER_BOOKS_ID }, true);
         public static Index TRANSACTS_PKEY = Internal.createIndex("transacts_pkey", Transacts.TRANSACTS, new OrderField[] { Transacts.TRANSACTS.TRADE_ID }, true);
     }
 }
