@@ -71,10 +71,10 @@ public class ConnectDb {
         lastTransactIdMap.put(tradePair,lastTransactId);
     }
 
-    public void insertIntoOrderBooks(TradePairType tradePairType, OrderBook orderBook){
-        Instant instant=Instant.now();
+    public void insertIntoOrderBooks(TradePairType tradePairType, OrderBook orderBook, Long currentUnixTime){
+/*        Instant instant=Instant.now();
         Long currentUnixTime=instant.getEpochSecond();
-        System.out.println("Current time= "+currentUnixTime);
+        System.out.println("Current time= "+currentUnixTime);*/
         for (ArrayList<BigDecimal> i: orderBook.BTC_USD.ask) {
             create.insertInto(ORDER_BOOKS,
                     ORDER_BOOKS.TRADE_PAIR, ORDER_BOOKS.TYPE, ORDER_BOOKS.PRICE, ORDER_BOOKS.QUANTITY, ORDER_BOOKS.AMOUNT, ORDER_BOOKS.DATE)
